@@ -24,6 +24,7 @@ RUN cd /home/teamspeak && tar -xzf /home/teamspeak/teamspeak3-server*.tar.gz
 
 # Copy and chmod scripts.
 ADD /scripts/ /home/teamspeak/scripts/
+RUN chown -R teamspeak /home/teamspeak/scripts/
 RUN chmod -R 774 /home/teamspeak/scripts/
 
 # Change user for the entrypoint.
