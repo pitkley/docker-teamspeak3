@@ -8,22 +8,29 @@ FROM ubuntu
 
 MAINTAINER Alex
 
-## Set some variables for override.
+## ENV Variables. Can be overriden at "docker run" with -e
 # Download Link of TS3 Server
 ENV TEAMSPEAK_URL http://dl.4players.de/ts/releases/3.0.11.1/teamspeak3-server_linux-amd64-3.0.11.1.tar.gz
 
 # Inject a Volume for any TS3-Data that needs to be persisted or to be accessible from the host. (e.g. for Backups)
 VOLUME ["/teamspeak3"]
 
-# Download TS3 file and extract it into /opt.
-ADD ${TEAMSPEAK_URL} /opt/
-RUN cd /opt && tar -xzf /opt/teamspeak3-server_linux-amd64-3*.tar.gz
+# Create a user (teamspeak) for the Server.
+RUN useradd -d /home/teamspeak -m teamspeak
 
-ADD /scripts/ /opt/scripts/
-RUN chmod -R 774 /opt/scripts/
+# Download TS3 file and extract it into ~teamspeak. 
+ADD ${TEAMSPEAK_URL} /home/teamspeak/
+RUN cd /home/teamspeak && tar -xzf /home/teamspeak/teamspeak3-server*.tar.gz
 
+# Copy and chmod scripts.
+ADD /scripts/ /home/teamspeak/scripts/
+RUN chmod -R 774 /home/teamspeak/scripts/
+
+# Change user for the entrypoint.
+USER teamspeak
+
+# docker-ts3.sh will symlink conf-files and start the server
 ENTRYPOINT ["/opt/scripts/docker-ts3.sh"]
-#CMD ["-w", "/teamspeak3/query_ip_whitelist.txt", "-b", "/teamspeak3/query_ip_blacklist.txt", "-o", "/teamspeak3/logs/", "-l", "/teamspeak3/"]
 
 # Expose the Standard TS3 port.
 EXPOSE 9987/udp
