@@ -30,7 +30,7 @@ RUN chmod -R 774 /home/teamspeak/scripts/
 USER teamspeak
 
 # docker-ts3.sh will symlink conf-files and start the server
-ENTRYPOINT ["/opt/scripts/docker-ts3.sh"]
+ENTRYPOINT ["/home/teamspeak/scripts/docker-ts3.sh"]
 
 # Expose the Standard TS3 port.
 EXPOSE 9987/udp
