@@ -1,6 +1,6 @@
 ### docker-teamspeak3
 
-Ubuntu with TS3 Server.
+Ubuntu with TS3 Server. (Fork from https://github.com/devalx/docker-teamspeak3)
 
 #### Summary
 * Ubuntu
