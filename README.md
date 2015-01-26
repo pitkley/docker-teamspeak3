@@ -34,7 +34,7 @@ Ubuntu with TS3 Server.
   
 	Just in case you dont wanna use the index.
 	
-    `sudo docker build https://github.com/devalx/docker-teamspeak3.git` 
+    `sudo docker build https://github.com/jhartlep/docker-teamspeak3.git` 
   
   
   * Create container
