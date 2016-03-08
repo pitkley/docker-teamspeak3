@@ -6,7 +6,7 @@ echo "1. Check if ts3server.sqlitedb exists in host-mounted volume."
 if [ -f $VOLUME/ts3server.sqlitedb ]
   then
     echo "$VOLUME/ts3server.sqlitedb found. Creating Link between host-mounted db-file and ts3-folder."
-	ln -s $VOLUME/ts3server.sqlitedb /opt/teamspeak3-server_linux-amd64/ts3server.sqlitedb 
+	ln -s $VOLUME/ts3server.sqlitedb /opt/teamspeak3-server_linux_amd64/ts3server.sqlitedb 
 fi
 echo "2. Link the files-folder into the host-mounted volume. TODO Not implemented yet"
 #ln -s /opt/teamspeak3-server_linux-amd64/files/ /teamspeak3/files/
@@ -23,11 +23,11 @@ if [ -f $VOLUME/ts3server.ini ]
 	echo "logpath='/teamspeak3/logs/'"
 	echo "licensepath='/teamspeak3/'" 
 	echo "inifile='/teamspeak3/ts3server.ini'"
-	/opt/teamspeak3-server_linux-amd64/ts3server_minimal_runscript.sh \
+	/opt/teamspeak3-server_linux_amd64/ts3server_minimal_runscript.sh \
 		inifile="/teamspeak3/ts3server.ini"
   else
 	echo "$VOLUME/ts3server.ini not found. Creating new config file."
-	/opt/teamspeak3-server_linux-amd64/ts3server_minimal_runscript.sh \
+	/opt/teamspeak3-server_linux_amd64/ts3server_minimal_runscript.sh \
 		query_ip_whitelist="/teamspeak3/query_ip_whitelist.txt" \
 		query_ip_backlist="/teamspeak3/query_ip_blacklist.txt" \
 		logpath="/teamspeak3/logs/" \
