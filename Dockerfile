@@ -9,7 +9,7 @@ MAINTAINER Pit Kleyersburg <pitkley@googlemail.com>
 
 ## Set some variables for override.
 # Download Link of TS3 Server
-ENV TEAMSPEAK_VERSION 3.0.12.4
+ENV TEAMSPEAK_VERSION 3.0.13
 ENV TEAMSPEAK_URL http://dl.4players.de/ts/releases/${TEAMSPEAK_VERSION}/teamspeak3-server_linux_amd64-${TEAMSPEAK_VERSION}.tar.bz2
 
 # Create volume-directory
